@@ -4748,6 +4748,11 @@ supports-color@^6.1.0:
   dependencies:
     has-flag "^3.0.0"
 
+system-bell-webpack-plugin@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/system-bell-webpack-plugin/-/system-bell-webpack-plugin-1.0.0.tgz#806af12b1fe0d7458478f9b63426af92f5abb47b"
+  integrity sha1-gGrxKx/g10WEePm2NCavkvWrtHs=
+
 tapable@^1.0.0, tapable@^1.1.0:
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/tapable/-/tapable-1.1.3.tgz#a1fccc06b58db61fd7a45da2da44f5f3a3e67ba2"

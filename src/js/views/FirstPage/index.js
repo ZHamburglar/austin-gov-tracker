@@ -4,7 +4,7 @@ import React, { Component } from "react";
 class FirstPage extends Component {
   render() {
     return (
-      <div>First Page here</div>
+      <div>First Page here<div>boooooo</div></div>
     );
   }
 }
