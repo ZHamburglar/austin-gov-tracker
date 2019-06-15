@@ -1,0 +1,18 @@
+{
+    "workbench.colorCustomizations": {
+      "titleBar.activeBackground": "#00b140",
+      "titleBar.inactiveBackground": "#3CB371"
+    },
+    "editor.tokenColorCustomizations": {
+      "textMateRules": [
+        {
+          "scope": "comment",
+          "settings": {
+            "fontStyle": "italic"
+          }
+        }
+      ],
+      "comments": "#00b140"
+    }
+  }
+  
