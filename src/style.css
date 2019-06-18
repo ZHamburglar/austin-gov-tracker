@@ -4,6 +4,11 @@ body {
   font-family: sans-serif;
 }
 
-.active{
-    color:red;
+:global .active{
+  color:red;
 }
+
+:global .global-text {
+  color: blue;
+}
+

@@ -6,7 +6,7 @@ import styles from './style.css';
 class FirstPage extends Component {
   render() {
     return (
-      <div>First Page here<div className={styles.localcolor}>boooooo</div></div>
+      <div>First Page here<div className={styles.localcolor}>This is local text.</div><div className="global-text">This is the global text</div></div>
     );
   }
 }

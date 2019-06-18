@@ -6,9 +6,9 @@ import {
     BrowserRouter as Router,
     Switch
 } from "react-router-dom";
-import FirstPage from './js/views/FirstPage';
-import SecondPage from './js/views/SecondPage';
-import ThirdPage from './js/views/ThirdPage';
+import FirstPage from './views/FirstPage';
+import SecondPage from './views/SecondPage';
+import ThirdPage from './views/ThirdPage';
 
 import './style.css';
 
