@@ -1,5 +1,6 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const path = require('path');
 const combineLoaders = require('webpack-combine-loaders');
 
 // const SystemBellPlugin = require('system-bell-webpack-plugin');
@@ -15,6 +16,14 @@ module.exports = {
     // This suppresses the compiling information in the terminal.
     noInfo: true,
     overlay: true,
+  },
+  resolve: {
+    alias: {
+      '@components': path.resolve(__dirname, 'src/components'),
+      '@modules': path.resolve(__dirname, 'src/modules'),
+      '@scss': path.resolve(__dirname, 'scss'),
+      '@views': path.resolve(__dirname, 'src/views'),
+    }
   },
   watch: true,
   watchOptions: {

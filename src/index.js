@@ -21,23 +21,21 @@ class App extends Component {
       <Provider store={makeStore}>
         <Router>
           <div>
-            <ul>
-              <li>
-                <NavLink exact activeClassName="active" to="/">
-                  Home
-                </NavLink>
-              </li>
-              <li>
-                <NavLink activeClassName="active" to="/second">
-                  Users
-                </NavLink>
-              </li>
-              <li>
-                <NavLink activeClassName="active" to="/third">
-                  Contact
-                </NavLink>
-              </li>
-            </ul>
+            <div className="d-inline-block p-3">
+              <NavLink exact activeClassName="active" to="/">
+                Home
+              </NavLink>
+            </div>
+            <div className="d-inline-block p-3">
+              <NavLink activeClassName="active" to="/second">
+                Users
+              </NavLink>
+            </div>
+            <div className="d-inline-block p-3">
+              <NavLink activeClassName="active" to="/third">
+                Contact
+              </NavLink>
+            </div>
             <hr />
             <Switch>
               <Route exact path="/" component={FirstPage} />

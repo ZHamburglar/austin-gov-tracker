@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { func, number } from 'prop-types';
-import { addFirstTotal, subFirstTotal, addSecondTotal, subSecondTotal } from '../../modules/Calculator/actions';
-import { getFirstTotal, getSecondTotal } from '../../modules/Calculator/selectors';
+import { addFirstTotal, subFirstTotal, addSecondTotal, subSecondTotal } from '@modules/Calculator/actions';
+import { getFirstTotal, getSecondTotal } from '@modules/Calculator/selectors';
 
 import styles from './style.scss';
 // Let me tell you about the other guys
@@ -16,20 +16,20 @@ class FirstPage extends Component {
         <p>First Page here</p>
         <div className={styles.localcolor}>This is local text.</div>
         <div className="global-text">This is the global text</div>
-        <div className="p-1">
+        <div className="pb-2">
           <div className="d-inline-block">
             <button onClick={() => this.props.addFirstTotal()}>Add +</button>
           </div>
-          <div className="d-inline-block">First Total: {first_total}</div>
+          <div className="d-inline-block px-2">First Total: {first_total}</div>
           <div className="d-inline-block">
             <button onClick={() => this.props.subFirstTotal()}>Sub -</button>
           </div>
         </div>
-        <div className="p-1">
+        <div className="pb-1">
           <div className="d-inline-block">
             <button onClick={() => this.props.addSecondTotal()}>Add +</button>
           </div>
-          <div className="d-inline-block">Second Total: {second_total}</div>
+          <div className="d-inline-block px-2">Second Total: {second_total}</div>
           <div className="d-inline-block">
             <button onClick={() => this.props.subSecondTotal()}>Sub -</button>
           </div>

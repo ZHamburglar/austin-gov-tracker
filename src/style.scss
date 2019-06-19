@@ -1,4 +1,5 @@
 :global body {
+  @import "../scss/padding.scss";
   margin: 0;
   padding: 2rem;
   font-family: sans-serif;
@@ -19,15 +20,5 @@
 
   .d-block {
     display: block !important;
-  }
-
-  // Padding Styles
-  // Padding 1em
-  .p-1 {
-    padding: 1em !important;
-  }
-  // Padding 4em
-  .p-4 {
-    padding: 4em !important;
   }
 }
