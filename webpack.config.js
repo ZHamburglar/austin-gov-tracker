@@ -10,7 +10,9 @@ module.exports = {
     hot: true,
     clientLogLevel: 'none',
     host: '0.0.0.0',
-    // Enable this if you want to use your computer's IP Address
+    // Enable this if you want correctly render after changes.
+    historyApiFallback: true,
+    // Enable this if you want to use your computer's IP Address.
     // useLocalIp: true,
     port: 9999,
     // This suppresses the compiling information in the terminal.
