@@ -6,7 +6,7 @@ import { createSelector } from 'reselect';
 /**
  * Select the portion of the root reducer
  */
-export const CalculatorReducer = () => state => state.get('facebook');
+export const CalculatorReducer = () => state => state.get('calculator');
 
 /**
  * Get First Total
@@ -15,9 +15,23 @@ export const CalculatorReducer = () => state => state.get('facebook');
  */
 export const getFirstTotal = () =>
   createSelector(
-    FacebookReducer(),
+    CalculatorReducer(),
     state => {
-      const d = state.get('ad_type');
-      return !d || d.__altered == false ? d.toJS() : d;
+      const d = state.get('first_total');
+      return !d || d.__altered == false ? d : d;
     }
   );
+
+/**
+ * Get Second Total
+ *
+ * @return {String}
+ */
+export const getSecondTotal = () =>
+createSelector(
+  CalculatorReducer(),
+  state => {
+    const d = state.get('second_total');
+    return !d || d.__altered == false ? d : d;
+  }
+);

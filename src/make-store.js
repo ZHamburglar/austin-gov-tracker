@@ -12,8 +12,7 @@ const storeEnhancers = composeWithDevTools({
   name: 'React Configured Base',
 })(composedMiddlewares);
 
-const makeStore = () => {
-  return createStore(reducers, undefined, storeEnhancers);
-};
+const makeStore = createStore(reducers, undefined, storeEnhancers);
+
 
 export default makeStore;

@@ -2,6 +2,7 @@
   margin: 0;
   padding: 2rem;
   font-family: sans-serif;
+  width: 100%;
 
   .active{
     color:red;
@@ -9,5 +10,24 @@
 
   .global-text {
     color: blue;
+  }
+
+  // Display Styles
+  .d-inline-block {
+    display: inline-block !important;
+  }
+
+  .d-block {
+    display: block !important;
+  }
+
+  // Padding Styles
+  // Padding 1em
+  .p-1 {
+    padding: 1em !important;
+  }
+  // Padding 4em
+  .p-4 {
+    padding: 4em !important;
   }
 }
