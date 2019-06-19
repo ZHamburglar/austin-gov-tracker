@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import styles from './style.css';
+import styles from './style.scss';
 // Let me tell you about the other guys
 
 class FirstPage extends Component {

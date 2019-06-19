@@ -10,7 +10,7 @@ import FirstPage from './views/FirstPage';
 import SecondPage from './views/SecondPage';
 import ThirdPage from './views/ThirdPage';
 
-import './style.css';
+import './style.scss';
 
 class App extends Component {
   render() {
