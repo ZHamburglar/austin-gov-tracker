@@ -29,7 +29,7 @@ class FirstPage extends Component {
           <div className="d-inline-block">
             <button onClick={() => this.props.addSecondTotal()}>Add +</button>
           </div>
-          <div className="d-inline-block px-2">Second Total: {second_total}</div>
+          <div className="d-inline-block px-2 text-hover-blue">Second Total: {second_total}</div>
           <div className="d-inline-block">
             <button onClick={() => this.props.subSecondTotal()}>Sub -</button>
           </div>
