@@ -1,0 +1,7 @@
+$direction: left, center, right, justify !default;
+
+@each $alignment in $direction {
+  .text-#{$alignment} {
+    text-align: $alignment !important;
+  }
+}

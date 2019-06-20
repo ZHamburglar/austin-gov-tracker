@@ -1,0 +1,34 @@
+$color-utilities: (
+  red: $red,
+  white: $white,
+//   grey5: $grey5,
+//   grey10: $grey10,
+//   grey15: $grey15,
+//   grey20: $grey20,
+//   grey25: $grey25,
+//   grey30: $grey30,
+//   grey35: $grey35,  
+//   grey40: $grey40,
+//   grey45: $grey45,
+//   grey50: $grey50,
+//   grey95: $grey95,
+  black: $black,
+);
+
+@each $color, $value in $color-utilities {
+    // Create text color utilities
+    .text-#{$color} {
+      color: $value !important;
+    }
+    // Create text hover color utilities
+    .text-hover-#{$color}:hover {
+      color: $value !important;
+    }
+    // Create bg color utilities
+    .bg-#{$color} {
+      background-color: $value !important;
+    }
+  }
+  [class*='text-hover-'] {
+    transition: color 0.2s;
+  }
