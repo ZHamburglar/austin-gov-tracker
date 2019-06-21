@@ -1,4 +1,4 @@
-$cursors: pointer, default, progress, not-allowed;
+$cursors: pointer, default, grab, text, e-resize, w-resize, progress, not-allowed;
 
 @each $cursor in $cursors {
   .cursor-#{$cursor} {
