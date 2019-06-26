@@ -19,7 +19,14 @@ class FirstPage extends Component {
   };
 
   render() {
-    const { first_total, second_total } = this.props;
+    const {
+      addFirstTotal,
+      addSecondTotal,
+      first_total,
+      second_total,
+      subFirstTotal,
+      subSecondTotal,
+    } = this.props;
     const { firstValue } = this.state;
     return (
       <div>
@@ -29,24 +36,24 @@ class FirstPage extends Component {
         <div className="global-text">{firstValue}</div>
         <div className="pb-2">
           <div className="d-inline-block">
-            <button onClick={() => this.props.addFirstTotal()}>Add +</button>
+            <button onClick={() => addFirstTotal()}>Add +</button>
           </div>
           <div className="d-inline-block px-2 text-hover-red">
             First Total: {first_total}
           </div>
           <div className="d-inline-block">
-            <button onClick={() => this.props.subFirstTotal()}>Sub -</button>
+            <button onClick={() => subFirstTotal()}>Sub -</button>
           </div>
         </div>
         <div className="pb-1">
           <div className="d-inline-block">
-            <button onClick={() => this.props.addSecondTotal()}>Add +</button>
+            <button onClick={() => addSecondTotal()}>Add +</button>
           </div>
           <div className="d-inline-block px-2 text-hover-blue">
             Second Total: {second_total}
           </div>
           <div className="d-inline-block">
-            <button onClick={() => this.props.subSecondTotal()}>Sub -</button>
+            <button onClick={() => subSecondTotal()}>Sub -</button>
           </div>
         </div>
       </div>

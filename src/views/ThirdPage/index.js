@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import FormContainer from './../../components/container/FormContainer';
 
 class ThirdPage extends Component {
   render() {
