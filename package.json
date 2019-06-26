@@ -7,7 +7,8 @@
   "scripts": {
     "start": "webpack-dev-server --open --mode development",
     "build": "webpack --mode production",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint ."
   },
   "keywords": [],
   "author": "",
@@ -15,6 +16,8 @@
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
+    "@commitlint/cli": "^8.0.0",
+    "@commitlint/config-conventional": "^8.0.0",
     "autoprefixer": "^9.6.0",
     "babel-eslint": "^10.0.2",
     "babel-loader": "^8.0.6",
@@ -58,5 +61,25 @@
     "redux-immutable": "^4.0.0",
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "concurrent": false,
+    "linters": {
+      "*.{js,mdx,json,jsx}": "pretty-quick --staged",
+      "*.js": [
+        "eslint --fix",
+        "git add"
+      ],
+      "*.scss": [
+        "csscomb --tty-mode --",
+        "git add"
+      ]
+    }
   }
 }

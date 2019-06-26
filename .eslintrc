@@ -19,7 +19,7 @@
       "ignoreMemberSort": false,
       "memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
     }],
-    "sort-keys": ["error", "asc", {"natural": true}, {"caseSensitive": false}],
+    "sort-keys": ["error", "asc", {"natural": true, "caseSensitive": false}],
 	  "eol-last": ["error", "always"],
 	  "no-underscore-dangle": 0,
 	  "import/imports-first": ["error", "absolute-first"],
