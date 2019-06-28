@@ -4,6 +4,11 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = (env, argv) => {
+  // eslint-disable-next-line global-require
+  const dotenv = require('dotenv').config({
+    path: path.join(__dirname, `/env/.${argv.mode}`),
+  });
+
   return {
     devServer: {
       clientLogLevel: 'none',
@@ -73,9 +78,7 @@ module.exports = (env, argv) => {
       }),
       new webpack.DefinePlugin({
         HELLO: '1+1+1',
-        'process.env': {
-          NODE_ENV: JSON.stringify(argv.mode),
-        },
+        'process.env': JSON.stringify(dotenv.parsed),
       }),
     ],
     resolve: {

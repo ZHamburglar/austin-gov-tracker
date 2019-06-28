@@ -4,21 +4,17 @@
 	"rules": {
     "camelcase": 0,
 	  "react/jsx-filename-extension": [
-		1,
-		{
-		  "extensions": [".js", ".jsx"]
-		}
-	  ],
+      1,
+      {
+        "extensions": [".js", ".jsx"]
+      }
+    ],
+    "no-shadow": 0,
 	  "react/no-deprecated": 2,
 	  "react/prop-types": 0,
-	  "react/button-has-type": 0,
+    "react/button-has-type": 0,
+    "global-require": "error",
     "react/destructuring-assignment": 2,
-    "sort-imports": ["error", {
-      "ignoreCase": true,
-      "ignoreDeclarationSort": false,
-      "ignoreMemberSort": false,
-      "memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
-    }],
     "sort-keys": ["error", "asc", {"natural": true, "caseSensitive": false}],
 	  "eol-last": ["error", "always"],
 	  "no-underscore-dangle": 0,

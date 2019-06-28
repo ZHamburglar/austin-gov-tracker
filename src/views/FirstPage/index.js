@@ -4,8 +4,8 @@ import { createStructuredSelector } from 'reselect';
 import { func, number } from 'prop-types';
 import {
   addFirstTotal,
-  subFirstTotal,
   addSecondTotal,
+  subFirstTotal,
   subSecondTotal,
 } from '@modules/Calculator/actions';
 import { getFirstTotal, getSecondTotal } from '@modules/Calculator/selectors';
@@ -19,7 +19,6 @@ class FirstPage extends Component {
   };
 
   render() {
-    console.log('process', process.env, HELLO);
     const {
       addFirstTotal,
       addSecondTotal,
@@ -89,8 +88,8 @@ export default connect(
   mapStateToProps,
   {
     addFirstTotal,
-    subFirstTotal,
     addSecondTotal,
+    subFirstTotal,
     subSecondTotal,
   }
 )(FirstPage);
