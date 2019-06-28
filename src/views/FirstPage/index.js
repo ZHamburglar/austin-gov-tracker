@@ -19,6 +19,7 @@ class FirstPage extends Component {
   };
 
   render() {
+    console.log('process', process.env, HELLO);
     const {
       addFirstTotal,
       addSecondTotal,

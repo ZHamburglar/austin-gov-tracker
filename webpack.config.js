@@ -1,103 +1,96 @@
-const HtmlWebPackPlugin = require("html-webpack-plugin");
+const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
-const combineLoaders = require('webpack-combine-loaders');
+const webpack = require('webpack');
 
-// const SystemBellPlugin = require('system-bell-webpack-plugin');
-
-module.exports = {
-  devServer: {
-    hot: true,
-    clientLogLevel: 'none',
-    host: '0.0.0.0',
-    // Enable this if you want correctly render after changes.
-    historyApiFallback: true,
-    // Enable this if you want to use your computer's IP Address.
-    // useLocalIp: true,
-    port: 9999,
-    // This suppresses the compiling information in the terminal.
-    noInfo: true,
-    overlay: true,
-  },
-  resolve: {
-    alias: {
-      '@components': path.resolve(__dirname, 'src/components'),
-      '@modules': path.resolve(__dirname, 'src/modules'),
-      '@scss': path.resolve(__dirname, 'scss'),
-      '@views': path.resolve(__dirname, 'src/views'),
-    }
-  },
-  watch: true,
-  watchOptions: {
-    aggregateTimeout: 600,
-    poll: 1000,
-    ignored: /node_modules/,
-  },
-  module: {
-    rules: [
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-				use: {
-					loader: "babel-loader"
-				}
-			},
-      {
-        test: /\.html$/,
-        use: [
-          {
-            loader: "html-loader"
-          }
-        ]
+module.exports = (env, argv) => {
+  return {
+    devServer: {
+      clientLogLevel: 'none',
+      // Enable this if you want correctly render after changes.
+      historyApiFallback: true,
+      host: '0.0.0.0',
+      hot: true,
+      // This suppresses the compiling information in the terminal.
+      noInfo: true,
+      // Set this to open the browser when webpack runs.
+      open: false,
+      overlay: true,
+      // Enable this if you want to use your computer's IP Address.
+      // useLocalIp: true,
+      port: 9999,
+    },
+    module: {
+      rules: [
+        {
+          exclude: /node_modules/,
+          test: /\.(js|jsx)$/,
+          use: {
+            loader: 'babel-loader',
+          },
+        },
+        {
+          test: /\.html$/,
+          use: [
+            {
+              loader: 'html-loader',
+            },
+          ],
+        },
+        {
+          test: /\.(sa|sc|c)ss$/,
+          use: [
+            {
+              loader: MiniCssExtractPlugin.loader,
+            },
+            {
+              loader: 'css-loader',
+              options: {
+                modules: true,
+                sourceMap: true,
+              },
+            },
+            {
+              loader: 'sass-loader',
+            },
+            {
+              loader: 'postcss-loader',
+            },
+          ],
+        },
+      ],
+    },
+    plugins: [
+      new HtmlWebPackPlugin({
+        filename: './index.html',
+        template: './src/index.html',
+      }),
+      new MiniCssExtractPlugin({
+        // Options similar to the same options in webpackOptions.output
+        // both options are optional
+        chunkFilename: '[id].css',
+        filename: '[name].css',
+      }),
+      new webpack.DefinePlugin({
+        HELLO: '1+1+1',
+        'process.env': {
+          NODE_ENV: JSON.stringify(argv.mode),
+        },
+      }),
+    ],
+    resolve: {
+      alias: {
+        '@components': path.resolve(__dirname, 'src/components'),
+        '@modules': path.resolve(__dirname, 'src/modules'),
+        '@scss': path.resolve(__dirname, 'scss'),
+        '@views': path.resolve(__dirname, 'src/views'),
       },
-      {
-        test: /\.(sa|sc|c)ss$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-          },
-          { 
-            loader: 'css-loader',
-            options: {
-              modules: true,
-              sourceMap: true,
-            }
-          },
-          {
-            loader: 'sass-loader',
-          },
-          {
-            loader: 'postcss-loader',
-          },
-        ],
-      },
-      // {
-      //   test: /\.css$/,
-      //   loader: 'style-loader'
-      // }, 
-      // {
-      //   test: /\.css$/,
-      //   loader: 'css-loader',
-      //   options: {
-      //     importLoaders: 2,
-      //     modules: true,
-      //     camelCase: true,
-      //     // localIdentName: '[path][name]__[local]--[hash:base64:5]',
-      //   },
-      // }
-    ]
-  },
-  plugins: [
-    new HtmlWebPackPlugin({
-      template: "./src/index.html",
-      filename: "./index.html"
-    }),
-    new MiniCssExtractPlugin({
-      // Options similar to the same options in webpackOptions.output
-      // both options are optional
-      filename: '[name].css',
-      chunkFilename: '[id].css',
-    }),
-    // new SystemBellPlugin(),
-  ]
+    },
+    watch: true,
+    watchOptions: {
+      aggregateTimeout: 600,
+      ignored: /node_modules/,
+      poll: 1000,
+    },
+  };
 };
