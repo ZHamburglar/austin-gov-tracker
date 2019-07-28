@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import ReactDOM from "react-dom";
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import {
-    Route,
-    NavLink,
-    BrowserRouter as Router,
-    Switch
-} from "react-router-dom";
+  Route,
+  NavLink,
+  BrowserRouter as Router,
+  Switch,
+} from 'react-router-dom';
 import { Provider } from 'react-redux';
 import FirstPage from './views/FirstPage';
 import SecondPage from './views/SecondPage';
@@ -13,6 +13,7 @@ import ThirdPage from './views/ThirdPage';
 
 import makeStore from './make-store';
 
+import 'react-table/react-table.css';
 import './style.scss';
 
 class App extends Component {
@@ -46,8 +47,8 @@ class App extends Component {
           </div>
         </Router>
       </Provider>
-      );
-    }
+    );
+  }
 }
 
-ReactDOM.render(<App />, document.getElementById("create-article-form"))
+ReactDOM.render(<App />, document.getElementById('create-article-form'));

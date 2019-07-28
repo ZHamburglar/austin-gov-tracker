@@ -43,7 +43,8 @@ module.exports = (env, argv) => {
           ],
         },
         {
-          test: /\.(sa|sc|c)ss$/,
+          exclude: [/node_modules/],
+          test: /\.(sa|sc)ss$/,
           use: [
             {
               loader: MiniCssExtractPlugin.loader,
@@ -62,6 +63,11 @@ module.exports = (env, argv) => {
               loader: 'postcss-loader',
             },
           ],
+        },
+        {
+          include: /node_modules/,
+          loaders: ['style-loader', 'css-loader'],
+          test: /\.css$/,
         },
       ],
     },
@@ -86,6 +92,7 @@ module.exports = (env, argv) => {
         '@components': path.resolve(__dirname, 'src/components'),
         '@modules': path.resolve(__dirname, 'src/modules'),
         '@scss': path.resolve(__dirname, 'scss'),
+        '@UIComponents': path.resolve(__dirname, 'src/UIComponents'),
         '@views': path.resolve(__dirname, 'src/views'),
       },
     },

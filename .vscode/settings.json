@@ -1,28 +1,29 @@
 {
-    "workbench.colorCustomizations": {
-      "titleBar.activeBackground": "#00b140",
-      "titleBar.inactiveBackground": "#3CB371"
-    },
-    "editor.tokenColorCustomizations": {
-      "textMateRules": [
-        {
-          "scope": "comment",
-          "settings": {
-            "fontStyle": "italic"
-          }
+  "workbench.colorCustomizations": {
+    "titleBar.activeBackground": "#00b140",
+    "titleBar.inactiveBackground": "#3CB371",
+    "editorError.foreground": "#d70000",
+    "editorInfo.foreground": "#d70000"
+  },
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": "comment",
+        "settings": {
+          "fontStyle": "italic"
         }
-      ],
-      "comments": "#00b140"
-    },
-    "[javascript]": {
-      "editor.insertSpaces": true,
-      "editor.tabSize": 2,
-      "editor.detectIndentation": false
-    },
-    "[json]": {
-      "editor.insertSpaces": false,
-      "editor.tabSize": 4,
-      "editor.detectIndentation": true
-    }
+      }
+    ],
+    "comments": "#00b140"
+  },
+  "[javascript]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.detectIndentation": false
+  },
+  "[json]": {
+    "editor.insertSpaces": false,
+    "editor.tabSize": 4,
+    "editor.detectIndentation": true
   }
-  
+}
