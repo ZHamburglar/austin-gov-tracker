@@ -6,6 +6,7 @@ import {
   BrowserRouter as Router,
   Switch,
 } from 'react-router-dom';
+
 import { Provider } from 'react-redux';
 import FirstPage from './views/FirstPage';
 import SecondPage from './views/SecondPage';
@@ -49,6 +50,6 @@ class App extends Component {
       </Provider>
     );
   }
-}
+};
 
 ReactDOM.render(<App />, document.getElementById('create-article-form'));

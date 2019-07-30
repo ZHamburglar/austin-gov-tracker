@@ -28,3 +28,7 @@ Putting it all together:
 `git commit -m "feat(update-heading): changed heading organization"`
 
 `git commit -m "refactor(ref-headers): Refactor all heading components"`
+
+**Danger No Verify**
+
+`git commit -m "feat(dangerous-commit): skip husky checks" --no-verify`

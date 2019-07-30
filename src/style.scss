@@ -21,4 +21,100 @@
   .d-block {
     display: block !important;
   }
+
+  .divider {
+    width: 100%;
+    border-bottom: solid 1px $neutral05;
+  }
+
+  .pagination {
+    display: flex;
+    align-items: center;
+  
+    font-size: 14px;
+    color: $neutral04;
+    .pagination__current {
+      margin-right: $spacer1;
+  
+      &--expandable {
+        color: $blue;
+        text-decoration: underline;
+  
+        cursor: pointer;
+      }
+    }
+    .pagination__nav {
+      color: $neutral05;
+  
+      transition: color 0.3s;
+      &:not(.pagination__nav--disabled):hover {
+        color: $blue;
+  
+        cursor: pointer;
+      }
+      &--disabled {
+        color: $neutral07;
+  
+        cursor: not-allowed;
+      }
+      &--prev {
+        margin-right: $spacer2;
+      }
+      &--next {
+        margin-left: $spacer2;
+      }
+    }
+  }
+  .pagination__size-option {
+    font-size: 14px;
+    color: $neutral01;
+    white-space: nowrap;
+  
+    cursor: pointer;
+  
+    transition: color 0.3s;
+    &:hover {
+      color: $blue;
+    }
+  }
+
+  .dropdown {
+    position: absolute;
+    top: 53px;
+    left: 0;
+    z-index: 9;
+  
+    width: 100%;
+  }
+
+  .modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 205;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: $spacer2;
+  
+    &__close {
+      position: absolute;
+      top: 0;
+      z-index: 2;
+  
+      line-height: 60px;
+      color: pink;
+  
+      cursor: pointer;
+  
+      transition: color 0.3s;
+      &:hover {
+        color: red;
+      }
+    }
+  }
+  
 }

@@ -1,9 +1,10 @@
 import React from 'react';
 import { string } from 'prop-types';
 import cx from 'classnames';
+import styles from './style.scss';
 
 const ModalTitle = ({ className, ...props }) => {
-  return <div className={cx('modal__title', className)} {...props} />;
+  return <div className={cx(styles.modal__title, className)} {...props} />;
 };
 
 ModalTitle.propTypes = {

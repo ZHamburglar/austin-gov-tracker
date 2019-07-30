@@ -1,74 +1,67 @@
 import React from 'react';
 import { bool, func, node, string } from 'prop-types';
-import { animated, config, Transition } from 'react-spring';
+import Modal from 'react-modal';
 import cx from 'classnames';
+import Icon from '../Icon';
+import styles from './style.scss';
 
-// import Icon from '../Icon';
-import Portal from '../Portal';
-import { ModalActionsType } from './ModalActions';
+const customStyles = {
+  content: {
+    bottom: 'auto',
+    left: '50%',
+    marginRight: '-50%',
+    right: 'auto',
+    top: '50%',
+    transform: 'translate(-50%, -50%)',
+  },
+};
 
-class Modal extends React.Component {
+class ModalComponent extends React.Component {
+  requestClose = () => {
+    const { onRequestClose } = this.props;
+    onRequestClose();
+  };
+
   handleClose = () => {
-    this.props.onClose();
+    const { onClose } = this.props;
+    onClose();
   };
 
   handleOverlayClick = () => {
-    if (this.props.disableOverlayClose) {
+    const { disableOverlayClose } = this.props;
+    if (disableOverlayClose) {
       return;
     }
 
     this.handleClose();
   };
 
-  hasActions = () => {
-    const { children } = this.props;
-
-    const equalityPredicate = child => child && child.type === ModalActionsType;
-
-    return React.Children.toArray(children).some(equalityPredicate);
-  };
-
   render() {
-    const { children, className, isVisible } = this.props;
+    const {
+      children,
+      className,
+      onClose,
+      isOpen,
+      onAfterOpen,
+      onRequestClose,
+    } = this.props;
 
     return (
-      <Portal>
-        <Transition
-          native
-          items={isVisible}
-          from={{ opacity: 0 }}
-          enter={{ opacity: 1 }}
-          leave={{ opacity: 0 }}
-          config={{ ...config, duration: 300 }}
-        >
-          {toggle =>
-            toggle &&
-            (styles => (
-              <animated.div
-                className={cx({
-                  modal: true,
-                  'modal--has-actions': this.hasActions(),
-                })}
-                style={styles}
-              >
-                <div className={cx('modal__dialog', className)} style={styles}>
-                  {/* <Icon
-                    icon="close"
-                    className="modal__close"
-                    onClick={this.handleClose}
-                  /> */}
-                  <div className="modal__content">{children}</div>
-                </div>
-                <animated.div
-                  className="overlay"
-                  onClick={this.handleOverlayClick}
-                  style={styles}
-                />
-              </animated.div>
-            ))
-          }
-        </Transition>
-      </Portal>
+      <Modal
+        isOpen={isOpen}
+        onAfterOpen={onAfterOpen}
+        onRequestClose={onRequestClose}
+        onClose={onClose}
+        contentLabel="Example Modal"
+        className={styles.modal}
+      >
+        <div className={cx(styles.modal__dialog, className)}>
+          <div className={styles.modal__close} onClick={this.requestClose}>
+            <Icon icon="times-circle" className={styles.modal__close_icon} />
+          </div>
+          <div className={styles.modal__content}>{children}</div>
+        </div>
+      </Modal>
     );
   }
 }
@@ -81,15 +74,15 @@ Modal.propTypes = {
   /** Whether or not to disable the ability to close the modal by clicking the overlay */
   disableOverlayClose: bool,
   /** Whether or not the drawer is currently visible */
-  isVisible: bool,
+  isOpen: bool,
   /** Callback function executed when the drawer should be closed */
   onClose: func.isRequired,
 };
 
-Modal.defaultProps = {
+ModalComponent.defaultProps = {
   disableOverlayClose: false,
-  isVisible: false,
+  isOpen: false,
 };
 
-export { Modal };
-export default Modal;
+export { ModalComponent };
+export default ModalComponent;

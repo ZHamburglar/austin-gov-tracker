@@ -3,9 +3,15 @@ import { shape } from 'prop-types';
 import ReactTable from 'react-table';
 import axios from 'axios';
 
+import { Divider, Modal, ModalTitle } from '@UIComponents';
+
+import styles from './style.scss';
+
 class CardTable extends Component {
   state = {
     card_list: [],
+    selected_card: {},
+    showModal: false,
     subTotal: 0,
   };
 
@@ -48,17 +54,47 @@ class CardTable extends Component {
       });
   };
 
+  setCardModal = card => {
+    console.log('row: ', card);
+    this.setState({ selected_card: card, showModal: true });
+  };
+
+  closeModal = () => {
+    this.setState({ showModal: false });
+  };
+
+  onClose = () => {
+    this.setState({ selected_card: {} });
+  };
+
   render() {
     const {
       set: { cards },
     } = this.props;
 
-    const { card_list, subTotal } = this.state;
+    const { card_list, selected_card, subTotal, showModal } = this.state;
 
     const columns = [
       {
         accessor: 'name',
-        Header: 'Name',
+        Cell: row => {
+          return (
+            <div className={styles.card_table_col}>
+              <div>
+                <div className={styles.card_name}>{row.original.name}</div>
+                <div>
+                  <img
+                    src={row.original.image_uris.border_crop}
+                    className={styles.card_image}
+                    onClick={() => this.setCardModal(row.original)}
+                  />
+                </div>
+              </div>
+            </div>
+          );
+        },
+        Header: 'Card',
+        minWidth: 150,
       },
       {
         accessor: 'rarity',
@@ -98,6 +134,29 @@ class CardTable extends Component {
           defaultPageSize={cards.length}
           className="-striped -highlight"
         />
+
+        <Modal
+          isOpen={showModal}
+          onAfterOpen={this.afterOpenModal}
+          onRequestClose={this.closeModal}
+          onClose={this.onClose}
+        >
+          {Object.entries(selected_card).length && (
+            <>
+              <ModalTitle>{selected_card.name}</ModalTitle>
+              <div className="p-2">
+                <img
+                    src={selected_card.image_uris.border_crop}
+                    className={styles.card_image}
+                  />
+                <div>This is part 1</div>
+                <div>This is part 1</div>
+                <Divider />
+                <div>This is part 1</div>
+              </div>
+            </>
+          )}
+        </Modal>
       </div>
     );
   }

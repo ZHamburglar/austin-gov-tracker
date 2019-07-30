@@ -12,32 +12,40 @@ import {
   subSecondTotal,
 } from '@modules/Calculator/actions';
 import { getFirstTotal, getSecondTotal } from '@modules/Calculator/selectors';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import CardTable from '@components/tables/subtable';
-import Modal from 'react-modal';
+import { Divider, Icon, Pagination, Modal, ModalTitle } from '@UIComponents';
 import styles from './style.scss';
-
-const customStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-  },
-};
 
 class FirstPage extends Component {
   state = {
+    currentPage: 1,
     decks: [],
     firstValue: 0,
+    pageSize: 15,
     showModal: false,
   };
 
   componentDidMount() {
+    this.getCardList();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { currentPage } = this.state;
+    if (prevState.currentPage !== currentPage) {
+      this.getCardList();
+    }
+  }
+
+  getCardList = () => {
+    const { currentPage, pageSize } = this.state;
+    this.setState({ deck: [] });
+    let url = 'https://magic-tracker-api.herokuapp.com/api/v1?';
+    url += `offset=${pageSize * currentPage}`;
+    url += `&limit=${pageSize}`;
     axios
-      .get('https://magic-tracker-api.herokuapp.com/api/v1?')
+      .get(url)
       .then(response => {
         // handle success
         this.setState({
@@ -48,7 +56,25 @@ class FirstPage extends Component {
         // handle error
         console.log(error);
       });
-  }
+  };
+
+  /**
+   * Change Current Page
+   *
+   * @param {Number} page [Current Page]
+   */
+  changeCurrentPage = page => {
+    this.setState({ currentPage: page });
+  };
+
+  /**
+   * Change Page Limit
+   *
+   * @param {Number} page [Current Page]
+   */
+  changeLimit = size => {
+    this.setState({ pageSize: size });
+  };
 
   /**
    * Handle Click on Full Row to expand
@@ -63,7 +89,7 @@ class FirstPage extends Component {
         } else {
           const { expanded } = state;
           const index = rowInfo.nestingPath[0];
-          const alt = { [index]: expanded[index] ? false : true };
+          const alt = { [index]: !expanded[index] };
 
           instance.setState({
             expanded: { ...expanded, ...alt },
@@ -83,12 +109,16 @@ class FirstPage extends Component {
 
   afterOpenModal = () => {
     // references are now sync'd and can be accessed.
-    this.subtitle.style.color = '#f00';
+    console.log('');
   };
 
   closeModal = () => {
     this.setState({ showModal: false });
   };
+
+  onClose = () => {
+    console.log('modal closed');
+  }
 
   render() {
     const {
@@ -99,12 +129,12 @@ class FirstPage extends Component {
       subFirstTotal,
       subSecondTotal,
     } = this.props;
-    const { firstValue, decks, showModal } = this.state;
+    const { firstValue, decks, showModal, pageSize, currentPage } = this.state;
 
     const columns = [
       {
         accessor: 'name',
-        Header: 'Name',
+        Header: 'Card',
       },
       {
         accessor: 'card_count',
@@ -173,29 +203,38 @@ class FirstPage extends Component {
           data={decks}
           columns={columns}
           showPagination={false}
-          defaultPageSize={20}
+          defaultPageSize={pageSize}
           className="-striped -highlight"
           getTdProps={this.handleFullRowClick}
           SubComponent={row => <CardTable set={row.original} />}
+        />
+
+        <Pagination
+          sizeOptions={[5, 10, 15, 25]}
+          currentPage={currentPage}
+          pageSize={pageSize}
+          totalItems={200}
+          onPageChange={v => this.changeCurrentPage(v)}
+          // onPageSizeChange={v => {
+          //   this.changeLimit(v);
+          //   this.changeCurrentPage(1);
+          // }}
         />
 
         <Modal
           isOpen={showModal}
           onAfterOpen={this.afterOpenModal}
           onRequestClose={this.closeModal}
-          style={customStyles}
-          contentLabel="Example Modal"
+          onClose={this.onClose}
         >
-          <h2 ref={subtitle => (this.subtitle = subtitle)}>Hello</h2>
-          <button onClick={this.closeModal}>close</button>
-          <div>I am a modal</div>
-          <form>
-            <input />
-            <button>tab navigation</button>
-            <button>stays</button>
-            <button>inside</button>
-            <button>the modal</button>
-          </form>
+          <ModalTitle>This Title</ModalTitle>
+          <div>
+            <div>This islkewjrwekre wekrjwelkrjwelkr lkjwerlkwejrklwej lkwjerklwej part 1</div>
+            <div>This is part 1</div>
+            <div>This is part 1</div>
+            <Divider />
+            <div>This is part 1</div>
+          </div>
         </Modal>
       </div>
     );

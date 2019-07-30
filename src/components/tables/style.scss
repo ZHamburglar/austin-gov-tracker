@@ -1,0 +1,14 @@
+.card_name {
+    text-align: center;
+}
+
+.card_image {
+    max-height: 200px;
+    cursor: pointer;
+}
+
+.card_table_col {
+    display: flex;
+    justify-content: center; /* For horizontal alignment */
+    align-items: center; /* For vertical alignment */
+}
