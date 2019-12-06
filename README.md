@@ -1,34 +1,57 @@
-### Making A Commit
+## Available Scripts
 
-This project base uses Husky configurations. Which means your commits must follow a certain format or else fail the pre-commit ESLint.
+In the project directory, you can run:
 
-Found in the package.json:
+## Build
 
-```json
-"husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "lint-staged"
-    }
-  }
-```
+In order to run latest build on Github Pages:
 
-Your commit message must follow the "type(context): message" format/
+`yarn start`
+`yarn prod`
 
-In place of the "type" you may use one of the following: **build**, **chore**, **ci**, **docs**, **feat**, **fix**, **perf**, **refactor**, **revert**, **style**, **test**.
+Then commit to the repo.
 
-In place of "context" you can use the commit name or what is changed in the commit, with lower case letters and the words separated by "-".
+## Todo's
 
-In place of the "message" you can leave the messages of what you actually changed in the commit.
+- Create CSS components
+- Decide CSS and Layout
+- Expenditures
+- Skeleton components while loading
+- Switch to plotly from chart.js? https://plot.ly/javascript/react/
+- React Table? https://react-table.js.org/#/story/readme
 
-**Note: You can not use capital letters when writing your message or else it will fail the [subject-case] tests**
+### CSS General
 
-Putting it all together:
+- Mobile friendliness
+- Media Breakpoints
 
-`git commit -m "feat(update-heading): changed heading organization"`
+### Structure
 
-`git commit -m "refactor(ref-headers): Refactor all heading components"`
+- Add Contributors Route
 
-**Danger No Verify**
+### NavBar
 
-`git commit -m "feat(dangerous-commit): skip husky checks" --no-verify`
+- Search Input for Users
+- Change mobile interaction when width is changed.
+- Sidebar for responsiveness. (https://codesandbox.io/s/325y47xk36)
+
+### Home
+
+- Build last two panels
+- Semantic UI statistics
+- Add to Calendar Button for voting dates: https://jasonsalzman.github.io/react-add-to-calendar/
+
+### Council
+
+- Clicking on Contributor's name takes you to their page.
+
+### Contributors
+
+- Indicate whether they are in city of Austin
+- Decide what to do with multiple locations
+
+### Organizations
+
+- Users link to their corresponding Contributors Page
+- Color Coding for Legends where appropriate
+- Zip Code Searching
